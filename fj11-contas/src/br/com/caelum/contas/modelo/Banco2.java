@@ -1,19 +1,22 @@
 package br.com.caelum.contas.modelo;
 
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Banco2 {
 
 	private String nome;
 	private int numero;
-	private List<ContaCorrente> contas;
+	private List<Conta> contas;
+	private Map<String, Conta> mapa;
 
 	public Banco2(String nome, int numero) {
 		this.nome = nome;
 		this.numero = numero;
-		this.contas = new ArrayList<ContaCorrente>();
+		// this.contas = new ArrayList<Conta>();
+		this.mapa = new HashMap<>();
 	}
 
 	public String getNome() {
@@ -25,23 +28,8 @@ public class Banco2 {
 	}
 
 	public void adiciona(Conta c) {
-		for (int i = 0; i < 20;) {
-			if (this.contas.get(i) == null) {
-			Conta cc = new ContaCorrente();
-			this.contas.add(i, (ContaCorrente) cc);
-			}
-			break;
-		}
-	}
-
-	public void mostraContas() {
-		for (int i = 0; i < 50; i++) {
-			System.out.println("Conta na posição " + i + ": " + "\nTitular = " + ((Conta) this.contas).getTitular()
-					+ "\nAgência = " + ((Conta) this.contas).getAgencia() + "\nNúmero = "
-					+ ((Conta) this.contas).getNumero());
-
-			System.out.println();
-		}
+		// contas.add(c);
+		mapa.put(c.getTitular(), c);
 	}
 
 	/*
@@ -53,19 +41,35 @@ public class Banco2 {
 	 */
 
 	public Conta pega(int x) {
-		Iterator<ContaCorrente> it = contas.iterator();
-		while (it.hasNext()) {
-			Conta c = it.next();
+		for (Conta conta : contas) {
+			if (conta.getNumero() == x) {
+				System.out.println(conta);
+			}
 		}
-		return (Conta) it;
+		return null;
 	}
 
 	public int pegaQuantidadeDeContas() {
-		int quantidade = 0;
-		for (ContaCorrente i : contas) {
-			quantidade = contas.lastIndexOf(i);
-		}
-		System.out.println(quantidade);
-		return quantidade;
+		int i = contas.size();
+		System.out.println(i);
+		return i;
+	}
+
+	// busca titular usando o for
+	/*
+	 * public Conta buscaPorTitular(String nome) { for (Conta conta : contas) { if
+	 * (conta.getTitular().equals(nome)) { System.out.println(conta); return conta;
+	 * } } return null; }
+	 */
+
+	//busca titular usando o Map
+	public Conta buscaPorTitular(String nome) {
+		for (String titular : mapa.keySet()) {
+		Conta c = mapa.get(nome);
+		System.out.println(c);
+		
+		return c;
+	}
+		return null;
 	}
 }
