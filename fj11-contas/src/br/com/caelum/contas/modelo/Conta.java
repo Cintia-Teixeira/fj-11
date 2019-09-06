@@ -14,7 +14,7 @@ public abstract class Conta implements Comparable<Conta> {
 	private int numero;
 	private String agencia;
 
-	// public abstract String getTipo();
+	public abstract String getTipo();
 
 	@Override
 	public int hashCode() {
