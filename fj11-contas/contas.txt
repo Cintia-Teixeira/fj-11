@@ -1,4 +1,2 @@
-Conta Corrente,7894,1234,Cintia,0.0
-Conta Corrente,6541,1234,Thais,0.0
-Conta Poupança,6578,1234,Maria,0.0
-Conta Poupança,3258,1234,Talita,0.0
+Conta Corrente,123456,1234,cintia,1000.0
+Conta Corrente,456987,1234,talita,1000.0
